@@ -33,7 +33,7 @@ export function Footer() {
                 <ChefHat className="h-6 w-6 text-white" />
               </div>
               <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
-                Gourmet Paradise
+                Swarg Swad
               </h3>
             </div>
             <p className="text-gray-300 leading-relaxed mb-6">
@@ -229,7 +229,7 @@ export function Footer() {
               transition={{ duration: 0.6, delay: 0.5 }}
               viewport={{ once: true }}
             >
-              © {currentYear} Gourmet Paradise. All rights reserved.
+              © {currentYear} Swarg Swad. All rights reserved.
             </motion.p>
 
             <motion.div

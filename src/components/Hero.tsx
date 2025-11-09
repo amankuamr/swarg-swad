@@ -96,7 +96,7 @@ export function Hero() {
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Gourmet Paradise
+            Swarg Swad
           </motion.h2>
         </motion.div>
 

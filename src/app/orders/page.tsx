@@ -73,7 +73,7 @@ export default function OrdersPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-gray-50 py-12 pt-24">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -105,7 +105,7 @@ export default function OrdersPage() {
                 <div className="text-center py-12">
                   <Package className="h-16 w-16 mx-auto mb-4 text-gray-400" />
                   <h3 className="text-xl font-semibold mb-2">No Orders Yet</h3>
-                  <p className="text-gray-600 mb-6">You haven't placed any orders yet.</p>
+                  <p className="text-gray-600 mb-6">You haven&apos;t placed any orders yet.</p>
                   <Link href="/">
                     <Button>Start Ordering</Button>
                   </Link>
@@ -128,7 +128,7 @@ export default function OrdersPage() {
                           </p>
                         </div>
                         <div className="text-right">
-                          <p className="font-bold text-xl">${order.totalAmount.toFixed(2)}</p>
+                          <p className="font-bold text-xl">₹{order.totalAmount.toFixed(2)}</p>
                           <Badge className={`${getStatusColor(order.status)} flex items-center gap-1 w-fit ml-auto mt-2`}>
                             {getStatusIcon(order.status)}
                             {order.status}

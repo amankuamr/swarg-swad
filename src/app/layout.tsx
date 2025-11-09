@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Gourmet Paradise - Fine Dining Experience",
-  description: "Experience culinary excellence with our carefully crafted dishes, made from the finest ingredients and served with passion.",
+  title: "Swarg Swad - Authentic Indian Cuisine",
+  description: "Experience heavenly flavors with our authentic Indian dishes, made with traditional recipes and finest ingredients.",
 };
 
 export default function RootLayout({

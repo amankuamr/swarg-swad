@@ -26,10 +26,10 @@ export function Cart() {
                     <div>
                       <h3 className="font-semibold">{cartItem.item.name}</h3>
                       <p className="text-sm text-gray-600">Quantity: {cartItem.quantity}</p>
-                      <p className="text-sm text-gray-600">${cartItem.item.price.toFixed(2)} each</p>
+                      <p className="text-sm text-gray-600">₹{cartItem.item.price.toFixed(2)} each</p>
                     </div>
                     <div className="text-right">
-                      <p className="font-semibold">${(cartItem.item.price * cartItem.quantity).toFixed(2)}</p>
+                      <p className="font-semibold">₹{(cartItem.item.price * cartItem.quantity).toFixed(2)}</p>
                       <Button
                         variant="destructive"
                         size="sm"
@@ -52,7 +52,7 @@ export function Cart() {
               <CardContent>
                 <div className="flex justify-between mb-4">
                   <span>Total:</span>
-                  <span className="font-bold text-lg">${total.toFixed(2)}</span>
+                  <span className="font-bold text-lg">₹{total.toFixed(2)}</span>
                 </div>
                 <Link href="/checkout">
                   <Button className="w-full">Proceed to Checkout</Button>

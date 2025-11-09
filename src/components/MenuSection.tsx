@@ -131,7 +131,7 @@ export function MenuSection({ categoryId, title, subtitle, backgroundColor = "bg
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          {items.map((item, index) => (
+          {items.slice(0, 6).map((item, index) => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, y: 30 }}
@@ -202,7 +202,7 @@ export function MenuSection({ categoryId, title, subtitle, backgroundColor = "bg
                       }}
                       transition={{ duration: 0.3 }}
                     >
-                      ${item.price.toFixed(2)}
+                      ₹{item.price.toFixed(2)}
                     </motion.div>
                   </div>
                   <CardDescription className="text-gray-600 leading-relaxed">
@@ -231,7 +231,7 @@ export function MenuSection({ categoryId, title, subtitle, backgroundColor = "bg
                       onClick={() => addToCart(item.id)}
                       className={`w-full bg-gradient-to-r ${getCategoryColor()} hover:opacity-90 text-white font-semibold py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl`}
                     >
-                      Add to Cart • ${item.price.toFixed(2)}
+                      Add to Cart • ₹{item.price.toFixed(2)}
                     </Button>
                   </motion.div>
                 </CardFooter>
@@ -248,16 +248,17 @@ export function MenuSection({ categoryId, title, subtitle, backgroundColor = "bg
           transition={{ duration: 0.6, delay: 0.8 }}
           viewport={{ once: true }}
         >
-          <p className="text-gray-600 mb-4">Love our {title.toLowerCase()}? Check out our other categories!</p>
+          <p className="text-gray-600 mb-4">Want to see more delicious options?</p>
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <Button
               variant="outline"
-              className="px-8 py-3 rounded-full border-2 hover:border-gray-400 transition-colors"
+              className="px-8 py-3 rounded-full border-2 hover:border-orange-400 hover:text-orange-600 transition-colors"
+              onClick={() => window.location.href = '/menu'}
             >
-              View All Categories
+              View All Items
             </Button>
           </motion.div>
         </motion.div>
