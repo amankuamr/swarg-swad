@@ -5,12 +5,18 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // For Vercel deployment
   },
-  // Disable Turbopack completely to avoid compatibility issues
-  experimental: {
-    // This will force webpack usage
+  // Force webpack usage to avoid Turbopack issues
+  turbopack: {},
+  webpack: (config, { dev }) => {
+    if (!dev) {
+      // Production-specific webpack config
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      };
+    }
+    return config;
   },
-  // Add output configuration for better Vercel compatibility
-  output: 'standalone',
 };
 
 export default nextConfig;
