@@ -136,75 +136,86 @@ export default function MenuPage() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                        whileHover={{ y: -8 }}
+                        whileHover={{ y: -5 }}
                         className="group"
                       >
-                        <Card className="h-full hover:shadow-2xl transition-all duration-500 border-0 shadow-xl overflow-hidden bg-white/80 backdrop-blur-sm">
+                        <Card className="h-full hover:shadow-2xl transition-all duration-300 border border-gray-100 shadow-lg overflow-hidden bg-white hover:bg-gray-50/50 mx-2">
+                          {/* Image Section - Full Top */}
                           {item.image && (
-                            <div className="relative h-48 overflow-hidden rounded-t-xl">
+                            <div className="relative h-72 overflow-hidden bg-gray-50 rounded-t-xl">
                               <motion.img
                                 src={item.image}
                                 alt={item.name}
-                                className="w-full h-full object-cover transition-all duration-700 rounded-t-xl"
-                                whileHover={{ scale: 1.1 }}
+                                className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105 rounded-t-xl"
                               />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent rounded-t-xl" />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent rounded-t-xl" />
 
-                              <motion.div
-                                className="absolute top-3 right-3"
-                                initial={{ scale: 0 }}
-                                whileHover={{ scale: 1.1 }}
-                                transition={{ duration: 0.2 }}
-                              >
-                                <Badge className={`bg-gradient-to-r ${getCategoryColor(category.id)} text-white font-semibold px-3 py-1`}>
-                                  {category.name}
+                              {/* Category Badge */}
+                              <div className="absolute top-4 left-4">
+                                <Badge className={`bg-gradient-to-r ${getCategoryColor(category.id)} text-white font-medium px-3 py-1 text-xs shadow-lg`}>
+                                  {getCategoryIcon(category.id)} {category.name}
                                 </Badge>
-                              </motion.div>
+                              </div>
+
+                              {/* Price Badge */}
+                              <div className="absolute top-4 right-4">
+                                <Badge variant="secondary" className="bg-white/95 text-gray-800 font-bold px-3 py-1 text-sm shadow-lg">
+                                  ₹{item.price.toFixed(2)}
+                                </Badge>
+                              </div>
+
+                              {/* Title Overlay */}
+                              <div className="absolute bottom-4 left-4 right-4">
+                                <h3 className="text-xl font-bold text-white mb-2 line-clamp-2 drop-shadow-lg">
+                                  {item.name}
+                                </h3>
+                                <div className="flex items-center gap-2">
+                                  <div className="flex items-center gap-1">
+                                    <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                                    <span className="text-sm font-medium text-white">4.9</span>
+                                  </div>
+                                  <span className="text-xs text-white/80">•</span>
+                                  <span className="text-xs text-white/80">12-15 min</span>
+                                </div>
+                              </div>
                             </div>
                           )}
 
-                          <CardHeader className="pb-3">
-                            <div className="flex justify-between items-start mb-2">
-                              <CardTitle className="text-xl text-gray-800 group-hover:text-gray-900 transition-colors">
-                                {item.name}
-                              </CardTitle>
-                              <motion.div
-                                className="text-2xl font-bold text-green-600"
-                                whileHover={{ scale: 1.1 }}
-                              >
-                                ${item.price.toFixed(2)}
-                              </motion.div>
-                            </div>
-                            <CardDescription className="text-gray-600 leading-relaxed">
-                              {item.description}
-                            </CardDescription>
-                          </CardHeader>
+                          {/* Content Section - Compact */}
+                          <div className="p-3">
+                            {/* Description */}
+                            {item.description && (
+                              <p className="text-sm text-gray-600 mb-2 line-clamp-2 leading-relaxed">
+                                {item.description}
+                              </p>
+                            )}
 
-                          <CardContent className="pt-0">
-                            <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                            {/* Features */}
+                            <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
                               <span className="flex items-center gap-1">
-                                <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                                4.9
+                                <Clock className="h-3 w-3" />
+                                Fresh Daily
                               </span>
-                              <span>12-15 min</span>
-                              <span>Free delivery</span>
+                              <span className="flex items-center gap-1">
+                                <ChefHat className="h-3 w-3" />
+                                Expert Made
+                              </span>
                             </div>
-                          </CardContent>
 
-                          <CardFooter className="pt-0">
+                            {/* Add to Cart Button */}
                             <motion.div
-                              className="w-full"
                               whileHover={{ scale: 1.02 }}
                               whileTap={{ scale: 0.98 }}
                             >
                               <Button
                                 onClick={() => addToCart(item.id)}
-                                className={`w-full bg-gradient-to-r ${getCategoryColor(category.id)} hover:opacity-90 text-white font-semibold py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl`}
+                                className={`w-full bg-gradient-to-r ${getCategoryColor(category.id)} hover:opacity-90 text-white font-semibold py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2`}
                               >
-                                Add to Cart • ₹{item.price.toFixed(2)}
+                                <Plus className="h-4 w-4" />
+                                Add to Cart
                               </Button>
                             </motion.div>
-                          </CardFooter>
+                          </div>
                         </Card>
                       </motion.div>
                     ))}
