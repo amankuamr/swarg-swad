@@ -14,6 +14,10 @@ interface Order {
   status: string
   paymentMethod: string
   createdAt: string
+  user?: {
+    name: string
+    email: string
+  }
   orderItems: {
     id: number
     quantity: number
@@ -30,10 +34,8 @@ export default function OrdersPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // For demo purposes, using a mock user ID. In a real app, this would come from authentication
-    const userId = 1
-
-    fetch(`/api/orders/${userId}`)
+    // For admin purposes, fetch all orders from all users
+    fetch('/api/orders/all')
       .then(res => res.json())
       .then(setOrders)
       .catch(() => {
@@ -122,6 +124,11 @@ export default function OrdersPage() {
                       <div className="flex justify-between items-start mb-4">
                         <div>
                           <h3 className="font-semibold text-lg">Order #{order.id}</h3>
+                          {order.user && (
+                            <p className="text-sm text-blue-600 font-medium">
+                              Customer: {order.user.name} ({order.user.email})
+                            </p>
+                          )}
                           <p className="text-sm text-gray-600">
                             {new Date(order.createdAt).toLocaleDateString()} at{' '}
                             {new Date(order.createdAt).toLocaleTimeString()}
@@ -152,7 +159,7 @@ export default function OrdersPage() {
                                 <p className="text-sm text-gray-600">Qty: {item.quantity}</p>
                               </div>
                             </div>
-                            <p className="font-semibold">${(item.price * item.quantity).toFixed(2)}</p>
+                            <p className="font-semibold">₹{(item.price * item.quantity).toFixed(2)}</p>
                           </div>
                         ))}
                       </div>

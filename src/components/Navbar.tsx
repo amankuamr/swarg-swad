@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ShoppingCart, Menu, Package } from 'lucide-react'
+import { ShoppingCart, Menu, Package, Settings } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useCart } from '@/hooks/useCart'
 
@@ -31,6 +31,13 @@ export function Navbar() {
               <Link href="/menu">
                 <Button variant="ghost" className="text-gray-700 hover:text-orange-600 hover:bg-orange-50 font-medium px-4 py-2 rounded-lg transition-all duration-200">
                   Menu
+                </Button>
+              </Link>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link href="/admin">
+                <Button variant="ghost" size="icon" className="text-gray-700 hover:text-orange-600 hover:bg-orange-50 w-10 h-10 rounded-lg transition-all duration-200">
+                  <Settings className="h-5 w-5" />
                 </Button>
               </Link>
             </motion.div>
