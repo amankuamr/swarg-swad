@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Ensure proper handling of static assets
+  images: {
+    unoptimized: true, // For Vercel deployment
+  },
 };
 
 export default nextConfig;
